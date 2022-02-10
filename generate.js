@@ -45,8 +45,9 @@ function renderTablePage(num, options = {}) {
 }
 
 function getInputsFromQuery(name) {
-  const str = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search)[1];
-  return str.split(',').map(table => ({
+  let results   = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+  const tables  = results && results[1].split(',') || [];
+  return tables.map(table => ({
     num:      +table.charAt(0),
     options: { isShuffled: !!table.charAt(1) }
   }));
