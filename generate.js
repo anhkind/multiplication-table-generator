@@ -51,9 +51,3 @@ function getInputsFromQuery(name) {
     options: { isShuffled: !!table.charAt(1) }
   }));
 }
-
-$(function(){
-  getInputsFromQuery('tables').forEach(input => {
-    renderTablePage(input.num, input.options);
-  })
-})
