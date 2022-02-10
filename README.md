@@ -10,4 +10,4 @@ Base URL: https://anhkind.github.io/multiplication-table-generator/?tables=
 
 ## Printing
 
-By default, each generated table will be printed on a SEPARATE page. To save page, try to combine 4 or 6 sheets into 1 page.
+By default, each generated table will be printed on a SEPARATE page. To save paper, try to combine 4 or 6 sheets into 1 page.
