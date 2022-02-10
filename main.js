@@ -44,41 +44,16 @@ function renderTablePage(num, options = {}) {
   $table.appendTo($page);
 }
 
+function getInputsFromQuery(name) {
+  const str = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search)[1];
+  return str.split(',').map(table => ({
+    num:      +table.charAt(0),
+    options: { isShuffled: !!table.charAt(1) }
+  }));
+}
+
 $(function(){
-  [
-    {
-      num:      9,
-      options:  { isShuffled: true }
-    },
-    {
-      num:      8,
-      options:  { }
-    },
-    {
-      num:      5,
-      options:  { }
-    },
-    {
-      num:      3,
-      options:  { }
-    },
-    {
-      num:      6,
-      options:  { }
-    },
-    {
-      num:      7,
-      options:  { }
-    },
-    {
-      num:      8,
-      options:  { }
-    },
-    {
-      num:      4,
-      options:  { }
-    }
-  ].forEach( inputs => {
-    renderTablePage(inputs.num, inputs.options)
-  });
+  getInputsFromQuery('tables').forEach(input => {
+    renderTablePage(input.num, input.options);
+  })
 })
