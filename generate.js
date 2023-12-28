@@ -44,11 +44,15 @@ function renderTablePage(num, options = {}) {
   $table.appendTo($page);
 }
 
+function extractOptions(table, shuffledSign = '$') {
+  return {
+    num:      +table.match(/\d+/)[0],
+    options: { isShuffled: _.endsWith(table, shuffledSign) }
+  }
+}
+
 function getInputsFromQuery(name) {
   let results   = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
   const tables  = results && results[1].split(',') || [];
-  return tables.map(table => ({
-    num:      +table.charAt(0),
-    options: { isShuffled: !!table.charAt(1) }
-  }));
+  return tables.map(table => extractOptions(table));
 }
