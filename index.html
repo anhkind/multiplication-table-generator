@@ -13,8 +13,8 @@
   <body>
     <script>
       $(function(){
-        getInputsFromQuery('tables').forEach(input => {
-          renderTablePage(input.num, input.options);
+        getTableDataFromQuery('tables').forEach(data => {
+          renderTablePage(data.num, data.options);
         })
       });
     </script>
